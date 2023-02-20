@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  swaggerui:
+    image: swaggerapi/swagger-ui
+    container_name: swagger
+    restart: always
+    # env_file: .env
+    volumes:
+      - type: bind
+        source: ./api.json
+        target: /api.json
+    environment:
+      - SWAGGER_JSON=/api.json
+    ports:
+      - "6001:8080"
